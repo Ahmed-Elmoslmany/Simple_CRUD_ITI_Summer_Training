@@ -1,0 +1,99 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<button><a href="/product/add">Add</a></button>
+
+ 
+     
+
+
+      <div class="dropdown">
+        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Select By Category
+        <span class="caret"></span></button>
+        <ul class="dropdown-menu">
+             @foreach(var c in  ViewBag.categories)
+           {
+             
+                 <li><a href="/product/selectby/@c.ID">@c.Name</a></li>
+          }
+        </ul>
+      </div>
+    
+
+
+
+<div class="cards" style="margin: 0 auto;
+    max-width: 1000px;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(225px, 1fr));
+    gap: 20px;
+    font-family: sans-serif;
+    padding-top: 30px;">
+
+
+    @foreach (var p in Model)
+
+    {
+   <div class="card" >
+    <img class="card_image" src="https://fakeimg.pl/400x300/009578/fff/" alt="" style="width: 100%;
+    height: 250px;
+    object-fit: cover;
+    display: block;
+    border-top: 2px solid #333333;
+    border-right: 2px solid #333333;
+    border-left: 2px solid #333333;">
+    <div class="card__content" style="line-height: 1.5;
+    font-size: 0.9em;
+    padding: 15px;
+    background: #fafafa;
+    border-right: 2px solid #333333;
+    border-left: 2px solid #333333;
+    position: relative;">
+      <p class="ProName" style="    font-size: medium;">
+        @p.Name
+      </p>
+      <p class="price" style=" position: absolute;
+    right: 10px;
+    top: 18px;
+    font-size: medium;">
+        @p.Price E.G
+      </p>
+      <p class="discribe" style=" text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;">
+       @p.details
+
+      </p>
+      
+    </div>
+    <div class="card__info" style=" padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #333333;
+    border-right: 2px solid #333333;
+    border-left: 2px solid #333333;">
+      <div>
+        <button class="Delete" style="  background-color: #e73040;
+    border: 2px solid #e73040;" > <a style=" text-decoration: none; color: white;" href="/product/delete/@p.Id">Delete</a></button>
+      </div>
+      <div>
+        <button class="Update" style=" background-color: #4033e7;
+    border: 2px solid #4033e7;"> <a style=" text-decoration: none; color: white;" href="/product/Update/@p.Id">Update</a></button>
+      </div>
+      <div>
+        <a href="/product/details/@p.Id" class="card_link">View Details</a>
+      </div>
+    </div>
+  </div>
+
+
+
+    }
+
+    </div>
+
+
+

@@ -1,0 +1,40 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<h2>AddProduct</h2>
+
+<form method="post" action="/Product/AddNew">
+    <div class="mb-3">
+        <label  class="form-label">ProductName</label>
+        <input type="text" name="Name" class="form-control" >
+        
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Price</label>
+        <input type="number"  name="Price" class="form-control" >
+    </div>
+
+     <div class="mb-3">
+        <label class="form-label">Details</label>
+        <input type="text"  name="details" class="form-control" >
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Category</label>
+        <select name="Category_ID" required>
+        @foreach (var c in Model)
+        {
+           
+           
+           <option value="@c.ID"  name="Category_ID">@c.Name</option>
+            
+
+        }
+        </select>
+    </div>
+
+    
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
